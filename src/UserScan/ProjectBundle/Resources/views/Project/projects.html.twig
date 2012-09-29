@@ -1,0 +1,130 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}{% trans %}Projects - UserScan{% endtrans %}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+
+    <div class="span3">
+        <p><i class="icon-eye-open"></i> Örnek test senaryoları;</p>
+        <pre style="word-break: normal;"><i class="icon-tags"></i> Sahibinden.com'dan Mecidiyeköy'de 1000 TL'e kadar kiralık ev araması yapın.</pre>
+        <pre style="word-break: normal;"><i class="icon-tags"></i> Hepsiburada.com'dan Everest marka kablosuz mouse satın alın.</pre>
+    </div>
+    <div class="span9">
+        <div class="content">
+                {% for project in projects %}
+                    <div class="well">
+                        <div id="project_{{ project.id }}">
+                            <h3 class="fl">Proje adı: {{ project.name }} </h3>
+                            <div class="fr">
+                                <a style="font-size: 13px;" href="{{ path('edit_project', { 'id' : project.id }) }}" data-toggle="modal" data-target="modal-ajax"><i class="icon-edit"></i> Düzenle</a> |
+                                <a style="font-size: 13px;" href="{{ path('delete_project', { 'id' : project.id }) }}" data-toggle="modal" data-target="modal-ajax"><i class="icon-remove-sign"></i> Sil</a>
+                            </div>
+                            <br class="clr" />
+
+                            {% if project.tasks|length > 0 %}
+                                <table class="table table-striped table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Görev</th>
+                                            <th>Açıklaması</th>
+                                            <th>İşlemler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for task in project.tasks %}
+                                            <tr id="task_{{ task.id }}">
+                                                <td>{{ loop.index }}</td>
+                                                <td>
+                                                    {{ task.name }}
+                                                </td>
+                                                <td>
+                                                    {{ task.description }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('change_task', { 'task_id': task.id }) }}" data-toggle="modal" data-target="modal-ajax">düzenle</a> |
+                                                    <a href="{{ path('delete_task', { 'task_id': task.id }) }}" data-toggle="modal" data-target="modal-ajax">sil</a>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+                                        {% if project.tasks|length < project_task_max_count %}
+                                        <tr>
+                                            <td colspan="4" style="text-align: right;">
+                                                <a href="{{ path('add_task', { 'project_id': project.id }) }}" data-toggle="modal" data-target="modal-ajax" class="btn btn-success">Görev ekle</a>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                    <a href="{{ path('add_task', { 'project_id': project.id }) }}" data-toggle="modal" data-target="modal-ajax" class="btn btn-success">Görev ekle</a>
+                            {% endif %}
+
+                            {% if testers|length > 0 %}
+                                <hr />
+                                <h3 class="fl">Test sonuç videoları:</h3>
+                                <br class="clr" />
+                                <table class="table table-striped table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Adı</th>
+                                            <th>Eposta</th>
+                                            {#<th>Tarayıcı</th>#}
+                                            <th>Tarih</th>
+                                            <th>İşlemler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for tester in project.testers if tester.uploaded == true %}
+                                        <tr>
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ tester.name }}</td>
+                                            <td>{{ tester.email }}</td>
+                                            {#<td>{{ tester.userAgent }}</td>#}
+                                            <td>{{ tester.createdAt|date('d/m/Y H:i') }}</td>
+                                            <td>
+                                                <a href="{{ path('play_video', { 'video_id': tester.sessionId }) }}" data-toggle="modal" data-target="modal-ajax" data-modal-width="600px" data-modal-left="50%">izle</a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="7">
+                                                Henüz video kaydı yapılmadı.
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                {#<p>
+                                    Henüz video kaydı yapılmadı.
+                                </p>#}
+                            {% endif %}
+                            <hr />
+                            <h4 class="tac">Linki kullanıcılarla paylaş:</h4>
+                            <input class="span8" type="text" value="{{ url('project_tester', {'url_id': project.getUrlId}) }}">
+
+                        </div>
+                    </div>
+            {% else %}
+
+            <div class="well tac">
+                <h1>Yeni bir proje oluştur</h1><br/>
+                <a href="{{ path('create_project') }}" data-toggle="modal" data-target="modal-ajax" data-modal-width="400px" class="btn btn-success btn-large">Ekle</a>
+                {#<button data-controls-modal="modal-from-dom" data-backdrop="false" data-keyboard="true" class="btn btn-success btn-small"></button>#}
+            </div>
+                {#<div class="well">
+                    <p>
+                        Henüz bir proje oluşturmadınız
+                    </p>
+                </div>#}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

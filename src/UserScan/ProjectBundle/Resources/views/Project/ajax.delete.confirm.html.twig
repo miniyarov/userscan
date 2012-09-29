@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <a href="#" class="close" data-dismiss="modal">×</a>
+    <h3>Projeyi silmek istiyor musunuz?</h3>
+</div>
+<form id="deleteProject" method="post" action="{{ path('delete_project', { 'id' : projectId }) }}">
+    <div class="modal-body">
+        Tüm görevleri ve video kayıtları silinecektir
+    </div>
+    <input type="hidden" name="confirm" value="1">
+    <div class="modal-footer">
+        <span id="loading" class="hide">
+            <img style="margin-top: 5px;" src="{{ asset('bundles/content/images/loading.gif') }}" alt="Bekleyin...">
+        </span>
+        <input type="submit" class="btn btn-danger" value="Sil" />
+        <button class="btn btn-info close" data-dismiss="modal">İptal</button>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function() {
+        $('#deleteProject').submit(function(e) {
+            e.preventDefault();
+            $('#loading').show();
+            $.ajax({
+                type: this.method,
+                url: this.action,
+                data: $(this).serialize(),
+                dataType: 'json',
+                error: function() {
+                    alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                },
+                success: function (data) {
+                    if (data.status == true) {
+                        window.location.reload();
+                    } else {
+                        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                    }
+                }
+            });
+        })
+    });
+</script>

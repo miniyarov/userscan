@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <a href="#" class="close" data-dismiss="modal">×</a>
+    <h3>Görev düzenleme</h3>
+</div>
+<form id="changeTask" method="post" action="{{ path('change_task', { 'task_id' : taskId }) }}" {{ form_enctype(taskForm) }}>
+    <div class="modal-body">
+        <div>
+            {{ form_label(taskForm.name, 'Görev adı') }}
+            {{ form_widget(taskForm.name, { 'attr': { 'class' : 'span4' } }) }}
+        </div>
+        <div>
+            {{ form_label(taskForm.description, 'Görev açıklaması') }}
+            {{ form_widget(taskForm.description, { 'attr': { 'class' : 'span4' } }) }}
+        </div>
+        <input type="hidden" name="project_id" value="{{ projectId }}">
+        {{ form_rest(taskForm) }}
+    </div>
+    <div class="modal-footer">
+        <span id="loading" class="hide">
+            <img style="margin-top: 5px;" src="{{ asset('bundles/content/images/loading.gif') }}" alt="Bekleyin...">
+        </span>
+        <input type="submit" class="btn primary large" value="Düzenle" />
+    </div>
+</form>
+<script type="text/javascript">
+    $(function() {
+        $('#changeTask').submit(function(e) {
+            e.preventDefault();
+            $('#loading').show();
+            $.ajax({
+                type: this.method,
+                url: this.action,
+                data: $(this).serialize(),
+                dataType: 'json',
+                error: function() {
+                    alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                },
+                success: function (data) {
+                    if (data.status == true) {
+                        window.location.reload();
+                    } else {
+                        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                    }
+                }
+            });
+        })
+    });
+</script>

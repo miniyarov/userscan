@@ -1,0 +1,49 @@
+projects:
+    pattern:  /projects/
+    defaults: { _controller: ProjectBundle:Project:projects }
+
+play_video:
+    pattern: /play_video/{video_id}/
+    defaults: { _controller: ProjectBundle:Project:playVideo }
+
+create_project:
+    pattern: /projects/create
+    defaults: { _controller: ProjectBundle:Project:createProject }
+
+edit_project:
+    pattern: /projects/edit/{id}
+    defaults: { _controller: ProjectBundle:Project:editProject }
+    requirements:
+        id: \d+
+
+delete_project:
+    pattern: /projects/delete/{id}
+    defaults: { _controller: ProjectBundle:Project:deleteProject }
+    requirements:
+        id: \d+
+
+add_task:
+    pattern: /project/add-task/{project_id}
+    defaults: { _controller: ProjectBundle:Task:addTask }
+    requirements:
+        project_id: \d+
+
+change_task:
+    pattern: /project/change-task/{task_id}
+    defaults: { _controller: ProjectBundle:Task:changeTask }
+    requirements:
+        task_id: \d+
+
+delete_task:
+    pattern: /project/delete-task/{task_id}
+    defaults: { _controller: ProjectBundle:Task:deleteTask }
+    requirements:
+        task_id: \d+
+
+project_admin:
+    pattern: /project_admin/
+    defaults: { _controller: ProjectBundle:Admin:index }
+
+admin_play_video:
+    pattern: /admin_play_video/{video_id}/
+    defaults: { _controller: ProjectBundle:Admin:playVideo }

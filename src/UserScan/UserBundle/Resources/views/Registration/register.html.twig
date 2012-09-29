@@ -1,0 +1,31 @@
+<div class="span5 register" style="width: 340px;margin-left: 340px;display: none;">
+    <div class="well">
+        <h2>Kayıt Ol</h2>
+        <form method="post" action="{{ path('register') }}" {{ form_enctype(registerForm) }}>
+            {{ form_errors(registerForm) }}
+            <div class="clearfix">
+                {{ form_label(registerForm.fullname, 'Adınız Soyadınız') }}
+                {{ form_widget(registerForm.fullname, { 'attr': {'class':'span4 required'} }) }}
+            </div>
+            <div class="clearfix">
+                {{ form_label(registerForm.username, 'Eposta') }}
+                {{ form_widget(registerForm.username, { 'attr': {'class':'span4 required email'} }) }}
+            </div>
+            <div class="clearfix">
+                {{ form_label(registerForm.password.first, 'Şifre') }}
+                {{ form_widget(registerForm.password.first, { 'attr': {'class':'span4 required'} }) }}
+            </div>
+            <div class="clearfix">
+                {{ form_label(registerForm.password.second, 'Şifre tekrar') }}
+                {{ form_widget(registerForm.password.second, { 'attr': {'class':'span4 required'} }) }}
+            </div>
+            {{ form_rest(registerForm) }}
+            <div class="clearfix" style="line-height: 37px;">
+                <a href="#" class="login">Üyemisin? Giriş yap.</a>
+                <input type="submit" class="btn-success fr btn-large" value="Kayıt ol">
+            </div>
+        </form>
+        <p class="lead">
+        </p>
+    </div>
+</div>

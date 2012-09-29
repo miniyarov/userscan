@@ -1,0 +1,7 @@
+parameters:
+#    project.example.class: UserScan\ProjectBundle\Example
+
+services:
+#    project.example:
+#        class: %project.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

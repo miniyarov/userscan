@@ -1,0 +1,35 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}{% trans %}Admin - UserScan{% endtrans %}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Kullanici</th>
+                    <th>Proje</th>
+                    <th>Site</th>
+                    <th>Video</th>
+                    <th>Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for project in projects %}
+                {% for tester in project.testers if tester.uploaded == 1 %}
+                    <tr>
+                        <td>{{ project.user.fullname }}</td>
+                        <td>{{ project.name }}</td>
+                        <td>{{ project.url }}</td>
+                        <td><a href="{{ path('admin_play_video', { 'video_id': tester.sessionId }) }}" data-toggle="modal" data-target="modal-ajax" data-modal-width="600px" data-modal-left="50%">izle</a></td>
+                        <td>{{ tester.createdAt|date('d/m/Y H:i') }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

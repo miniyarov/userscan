@@ -1,0 +1,43 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}{% trans %}Login{% endtrans %} | UserScan.com{% endblock %}
+
+{% block body %}
+<div class="inner">
+    <div class="container">
+    </div><!-- /container -->
+</div>
+
+<div class="row show-grid">
+    <div class="span5 login" style="width: 340px;  margin-left: 340px" >
+        <div class="well">
+            <h2>{% trans %}Login{% endtrans %}</h2>
+            {% if error %}
+                <div class="error">{{ error.message|trans|raw }}</div>
+            {% endif %}
+            <form method="post" action="{{ path('login_check') }}">
+                <div class="clearfix">
+                    <label for="_username">Eposta</label>
+                    <input id="_username" class="span4 required email" name="_username" type="text"value="{{ last_username }}" />
+                </div>
+                <div class="clearfix">
+                    <label for="_password">Şifre</label>
+                    <input id="_password" class="span4 required" name="_password" type="password"/>
+                </div>
+                <input type="hidden" value="{{ url('projects') }}" name="_target_path" />
+                <div class="clearfix" style="line-height: 37px;">
+                    <div class="fl">
+                        <a href="{{ url('forgot_password') }}">Şifremi unuttum</a>
+                        <br/>
+                        <a href="#" class="register">Yeni üyelik.</a>
+                    </div>
+                    <input type="submit" class="btn btn-success btn-large mr2fo fr" value="{% trans %}Login{% endtrans %}" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% render 'UserBundle:Registration:register' %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}{% trans %}Video Playback{% endtrans %}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="span3">
+        <ul style="list-style: none;margin-left: -1px;">
+            <li><h6><i class="icon-book"></i> Projenizi oluşturun</h6></li>
+            <li><h6><i class="icon-bookmark"></i> Görevleri ekleyin</h6></li>
+            <li><h6><i class="icon-ok"></i> Test linkinizi gönderin</h6></li>
+            <li><h6><i class="icon-film"></i> Ve sonuçları izleyin</h6></li>
+        </ul>
+        <p><i class="icon-eye-open"></i> Örnek vermek gerekirse;</p>
+        <pre style="word-break: normal;"><i class="icon-tags"></i> Sahibinden.com'dan Mecidiyeköy'de 1000 TL'e kadar kiralık ev araması yapın.</pre>
+        <pre style="word-break: normal;"><i class="icon-tags"></i> Hepsiburada.com'dan Everest marka kablosuz mouse satın alın.</pre>
+        <!--
+        <h5>
+            Ücretsiz versiyon kullanıyorsunuz.
+        </h5>
+        <p>Ücretli versiyon kullanmaya başladığınızda faydalanacaklarınız;</p>
+        <ul>
+            <li>Sınırsız Proje</li>
+            <li>Sınırsız Senaryo</li>
+            <li>Limitsiz Depolama</li>
+            <li>20 Dakikalık Test Videosu</li>
+        </ul>
+        -->
+    </div>
+
+    <div class="span9">
+        <div class="content">
+            <div class="well tac">
+                <div id="player" style="height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $f('player', '{{ asset('bundles/content/swf/flowplayer-3.2.11.swf') }}', {
+        clip: {
+            url: '{{ app.request.scheme ~ '://' ~ app.request.host ~ asset('videos/' ~ tester.sessionId ~ '.mp4') }}',
+            autoPlay: false,
+            autoBuffering: true
+        }
+    });
+</script>
+{% endblock %}

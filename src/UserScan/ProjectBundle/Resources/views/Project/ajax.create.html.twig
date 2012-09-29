@@ -1,0 +1,59 @@
+<div class="modal-header">
+    <a href="#" class="close" data-dismiss="modal">×</a>
+    <h3>Proje ekle</h3>
+</div>
+{% if limited == false %}
+    <form id="createProject" method="post" action="{{ path('create_project') }}" {{ form_enctype(projectForm) }}>
+        <div class="modal-body">
+            <div class="modal-body input_m">
+                {{ form_label(projectForm.name, 'Proje Adı') }}
+                {{ form_widget(projectForm.name, { 'attr': {'class':'span3'} }) }}
+                örnek: Userscan
+            </div>
+            <div class="modal-body input_m">
+                {{ form_label(projectForm.url, 'Proje Adresi') }}
+                {{ form_widget(projectForm.url, { 'attr': {'class':'span3', 'value' : 'http://'} }) }}
+                örnek: <a href="#" style="font-size: 11px;">http://userscan.com</a>
+            </div>
+            {{ form_rest(projectForm) }}
+        </div>
+        <div class="modal-footer">
+            <span id="loading" class="hide">
+                <img style="margin-top: 5px;" src="{{ asset('bundles/content/images/loading.gif') }}" alt="Bekleyin...">
+            </span>
+            <input type="submit" class="btn primary large" value="Proje Ekle" />
+        </div>
+    </form>
+{% else %}
+    <div class="modal-body">
+        {{ limited }}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info close" data-dismiss="modal">Kapat</button>
+    </div>
+{% endif %}
+
+<script type="text/javascript">
+    $(function() {
+        $('#createProject').submit(function(e){
+            e.preventDefault();
+            $('#loading').show();
+            $.ajax({
+                type: this.method,
+                url: this.action,
+                data: $(this).serialize(),
+                dataType: 'json',
+                error: function() {
+                    alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                },
+                success: function(data) {
+                    if (data.status) {
+                        window.location.reload();
+                    } else {
+                        alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+                    }
+                }
+            });
+        });
+    });
+</script>

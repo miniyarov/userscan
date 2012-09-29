@@ -1,0 +1,37 @@
+login:
+    pattern: /login/
+    defaults: { _controller: UserBundle:Security:login }
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout/
+
+register:
+    pattern: /register/
+    defaults: { _controller: UserBundle:Registration:register }
+
+forgot_password:
+    pattern: /forgot_password/
+    defaults: { _controller: UserBundle:Registration:forgotPassword }
+
+recover_password:
+    pattern: /recover_password/{recover_hash}
+    defaults: { _controller: UserBundle:Registration:recoverPassword }
+    requirements:
+        recover_hash: ([A-Za-z0-9]+)
+
+profile:
+    pattern: /profile/
+    defaults: { _controller: UserBundle:Profile:edit }
+
+changeProfilePassword:
+    pattern: /change-profile-password/
+    defaults: { _controller: UserBundle:Profile:changePassword }
+    requirements:
+        _method: POST
+
+mail_activation:
+    pattern: /mail-activate/{activation_hash}
+    defaults: { _controller: UserBundle:Profile:mailActivation, activation_hash : null }

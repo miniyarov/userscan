@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr" dir="ltr">
+<head>
+    <title>{% block title %}{% trans %}Low Cost Usability Testing{% endtrans %} | UserScan.com{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="author" content="UserScan">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="tr" />
+
+    {% if app.environment != 'dev' %}
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    {% endif %}
+    {% javascripts filter='?yui_js'
+        '@ContentBundle/Resources/public/js/jquery-1.7.2.min.js'
+        '@ContentBundle/Resources/public/js/*'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% stylesheets filter='cssrewrite,?yui_css'
+        'bundles/content/css/*'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+        .danger {
+            margin-left:10px;
+        }
+    </style>
+    {% if app.environment != 'dev' %}
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+
+    
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30856332-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    {% endif %}
+</head>
+
+<body>
+{% if is_granted('ROLE_USER') %}
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="logos" href="{{ path('projects') }}"></a>
+                    {% if hide_nav_bar is not defined %}
+                    <ul class="nav">
+                        <li {% if app.request.attributes.get('_route') == 'profile' %}class="active"{% endif %}>
+                            <a href="{{ path('profile') }}">{% trans with {'%name%': app.user.fullname} %}Aloha %name%{% endtrans %}</a>
+                        </li>
+                        <li {% if app.request.attributes.get('_route') == 'projects' %}class="active"{% endif %}>
+                            <a href="{{ path('projects') }}">{% trans %}Projects{% endtrans %}</a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li {% if app.request.attributes.get('_route') == 'project_admin' %}class="active"{% endif %}>
+                            <a href="{{ path('project_admin') }}">{% trans %}Admin{% endtrans %}</a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{ path('logout') }}">{% trans %}Exit{% endtrans %}</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+{% else %}
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="logos" href="{{ path('_homepage') }}"></a>
+                {% if hide_nav_bar is not defined %}
+                 <ul class="nav">
+                    <li {% if app.request.attributes.get('_route') == '_homepage' %}class="active"{% endif %}>
+                        <a href="{{ path('_homepage') }}">{% trans %}Home{% endtrans %}</a>
+                    </li>
+                    <li {% if app.request.attributes.get('_route') == 'how_it_works' %}class="active"{% endif %}>
+                        <a href="{{ path('how_it_works') }}">{% trans %}How it works{% endtrans %}</a>
+                    </li>
+                     {#<li {% if app.request.attributes.get('_route') == 'prices' %}class="active"{% endif %}>
+                        <a href="{{ path('prices') }}">{% trans %}Price{% endtrans %}</a>
+                    </li>
+                    <!--<li {% if app.request.attributes.get('_route') == 'blog' %}class="active"{% endif %}>
+                        <a href="{{ path('blog') }}">{% trans %}Blog{% endtrans %}</a>
+                    </li>-->#}
+                    <li {% if app.request.attributes.get('_route') == 'login' %}class="active"{% endif %}>
+                        <a href="{{ path('login') }}">{% trans %}Login{% endtrans %}</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if app.request.attributes.get('_route') == '_homepage' %}
+    <div class="page-block">
+        <h1>Hızlı, Ekonomik ve Kolay Kullanılabilirlik Testi</h1>
+        <div class="big-media">
+            <img alt="Hızlı, Ekonomik ve Kolay Kullanılabilirlik Testi"  src="{{asset('bundles/content/images/userscan-steps.png')}}" width="955">
+        </div>
+    </div>
+{% endif %}
+<div class="container">
+    <div id="flash-message-container">
+    {% if app.session.hasFlash('notice') %}
+        <div class="alert alert-info">
+            <button class="close" data-dismiss="alert">×</button>
+            {{ app.session.flash('notice')|raw }} {# background acik mavi olsun mu? #}
+        </div>
+    {% elseif app.session.hasFlash('error') %}
+        <div class="alert alert-error">
+            <button class="close" data-dismiss="alert">×</button>
+            {{ app.session.flash('error')|raw }} {# background acik kirmizi olsun mu? #}
+        </div>
+    {% endif %}
+    </div>
+    {#% if is_granted('ROLE_USER') and app.user.isActive == false %}
+        <div class="alert alert-error">
+            Proje oluşturabilmek için lütfen eposta adresinize gönderilen aktivasyon linkine tıklayarak
+            hesabınızı aktifleştirin. <a href="{{ path('mail_activation') }}" data-toggle="modal" data-target="modal-ajax">Aktivasyon linkini tekrar gönder.</a>
+        </div>
+    {% endif %#}
+
+
+    {% block body %}
+
+    {% endblock %}
+    {% block footer %}
+    <footer>
+        <ul class="footer">
+            <li><p>UserScan &copy; 2012</p></li>
+        </ul>
+        {% if hide_nav_bar is not defined %}
+        <ul class="footer" style="float: right;color: silver;">
+            <li><a href="{{ path('_homepage') }}">{% trans %}Home{% endtrans %}</a>  &bull;</li>
+            <li><a href="{{ path('how_it_works') }}">{% trans %}How it works{% endtrans %}</a> &bull;</li>
+            <li><a href="{{ path('about') }}">{% trans %}About{% endtrans %}</a></li>
+        </ul>
+        {% endif %}
+    </footer>
+    {% endblock %}
+</div> <!-- /container -->
+    {#
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter13875967 = new Ya.Metrika({id:13875967, enableAll: true, webvisor:true});
+                } catch(e) {}
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/13875967" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    #}
+    {% if app.environment != 'dev' %}
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+        {lang: 'tr'}
+    </script>
+    <script type="text/javascript">
+        var uvOptions = {};
+        (function() {
+            var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+            uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/lfzURWWWbJHC7pSzyOt3hg.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+        })();
+    </script>
+    {% endif %}
+</body>
+</html>

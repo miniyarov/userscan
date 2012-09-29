@@ -1,0 +1,96 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Kullanıcı davranışlarını hızlı, ekonomik ve kolay bir şekilde analiz edin. | UserScan.com{% endblock %}
+
+{% block body %}
+<!-- Main hero unit for a primary marketing message or call to action -->
+
+
+<div class="hero-unit">
+
+    <div class="span7">
+        <h2>Kullanıcı davranışlarını hızlı, ekonomik ve kolay bir şekilde analiz edin. {# UserScan ile sitenizi kolay ve ekonomik şekilde test edin. Veritabanından sitenize uygun kullanıcıları belirleyin, görevlerinizi oluşturun, sonuçlara anında ulaşın.#}</h2>
+        {#<p>
+
+            <a href="{{ path('login') }}" class="btn btn-large btn-warning">Kayıt Ol&raquo;</a>
+            Yada
+
+        </p>#}
+    </div>
+    <div class="span4">
+        <a href="{{ path('login') }}" class="btn btn-success btn-large" style="width: 270px; height: 44px; display: block; cursor: pointer; font-weight: bold; color: #fff; font-size: 30px; padding: 9px 0 0; ">Şimdi Dene &raquo;</a>
+    </div>
+
+    {#<div class="welcome-area video">
+        <iframe src="http://player.vimeo.com/video/8080943?title=0&amp;byline=0&amp;portrait=0&amp;color=c9ff23" width="400" height="235" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>#}
+</div>
+<div class="row main-page" style="margin-left: 0px;">
+    <h1 class="tac">UserScan ile Kullanılabilirlik Testi</h1>
+    <h4>
+        <ul>
+            <li><b>Veritabanımızdan</b> ürününüze uygun profillerdeki <b>kullanıcıları</b> seçin,</li>
+            <li>UserScan ile kullanıcıların web siteniz ile ilgili <b>davranışlarını bire bir test edin,</b></li>
+            <li>Yaşadığı sorunları analiz ederek, <b>kullanıcı dostu arayüzler oluşturun.</b></li>
+        </ul>
+    </h4>
+
+    <div class="box box-1">
+        <h1>Hızlı</h1>
+        <p>Hazırladığınız kullanılabilirlik testini veritabanımızdaki kullanıcılara gönderin ve 1 saat içinde sonuçları almaya başlayın!</p>
+    </div>
+    <div class="box box-2">
+        <h1>Video</h1>
+        <p>Kullanıcıların 15 dakikalık kullanım videoları ile sitenizi kullanırlarken yaşadığı sorunları gözlemleyin, gözlemlerinizi tasarım kararlarına dönüştürün!</p>
+    </div>
+    <br class="clr" />
+    <div class="box box-3">
+        <h1>Kolay</h1>
+        <p>Userscan.com ile kolayca kullanılabilirlik testleri oluşturup, hedef kitlenizdeki kullanıcı grubu ile paylaşabilirsiniz.</p>
+    </div>
+    <div class="box box-4">
+        <h1>Test İstatistikleri</h1>
+        <p>Kullanıcılar ortalama kaç dakikada üye olabiliyor? Kaç dakikada satın alma sürecini tamamlayabiliyor? Bu sorularınızın cevabı Userscan.com'da.</p>
+    </div>
+</div>
+<br class="clr" />
+{% if app.environment != 'dev' %}
+<div class="follow-buttons">
+    <div style="vertical-align:bottom; margin:0 65px 0 20px">
+        <a href="https://twitter.com/userscan" class="twitter-follow-button" data-show-count="false">Follow @userscan</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+
+    <div style="vertical-align:middle;margin-right: 60px;">
+        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffacebook.com%2Fuserscan&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=segoe+ui&amp;height=21&amp;appId=266337993405474" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>
+    </div>
+
+    <div style="vertical-align:bottom;">
+        <g:plusone annotation="inline" size="medium" width="120" href="https://plus.google.com/u/0/b/109932141949254209760/"></g:plusone>
+    </div>
+
+</div>
+{% endif %}
+{#
+<h1 style="margin-top:30px;">Userscan ile Kullanılabilirlik Testi;</h1>
+
+<h1 style="margin-top:30px;">Test Sonunda Ne Elde Edeceğim?</h1>
+<div class="row">
+    <div class="span-one-third">
+        <h2>Video</h2>
+        <p>49 TL'den başlayan fiyatlarla sisteminizi kullanıcılar ile deneyin, düşük maliyetli test ile sistem sorunlarınızı önceden fark edin!</p>
+        <p><a class="btn" href="#">Veritabanını İnceleyin &raquo;</a></p>
+    </div>
+    <div class="span-one-third">
+        <h2>Test İstatistikleri</h2>
+        <p>Kullanıcılar ortalama kaç dakikada üye olabiliyor? Kaç dakikada satın alma sürecini tamamlayabiliyor? Bu sorularınızın cevabı Userscan.com'da.</p>
+        <p><a class="btn" href="#">Fiyat Bilgisi Alın &raquo;</a></p>
+    </div>
+    <div class="span-one-third">
+        <h2>Anket Sonuçları</h2>
+        <p>System Usability Scale (SUS) kullanılabilirlik testi anketi ile sisteminizin global SUS skorunu öğrenin, ne kadar kullanılabilir bir web sayfasına sahip olduğunuzu öğrenin.</p>
+        <p><a class="btn" href="#">Sistemi İnceleyin &raquo;</a></p>
+    </div>
+</div>
+#}
+{% endblock %}

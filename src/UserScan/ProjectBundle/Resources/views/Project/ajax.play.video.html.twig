@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <a href="#" class="close" data-dismiss="modal">×</a>
+    <h3>Video</h3>
+</div>
+<div class="modal-body">
+    <div id="player" style="height: 400px; width: 584px;"></div>
+</div>
+<div class="modal-footer">
+    <input type="submit" class="btn btn-danger close" data-dismiss="modal" value="Kapat" />
+</div>
+<script type="text/javascript">
+    $f('player', '{{ asset('bundles/content/swf/flowplayer-3.2.11.swf') }}', {
+        clip: {
+            url: '{{ app.request.scheme ~ '://' ~ app.request.host ~ asset('videos/' ~ tester.sessionId ~ '.mp4') }}',
+            autoPlay: false,
+            autoBuffering: true
+        }
+    });
+</script>

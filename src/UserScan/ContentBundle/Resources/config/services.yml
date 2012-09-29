@@ -1,0 +1,7 @@
+parameters:
+#    content.example.class: UserScan\ContentBundle\Example
+
+services:
+#    content.example:
+#        class: %content.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

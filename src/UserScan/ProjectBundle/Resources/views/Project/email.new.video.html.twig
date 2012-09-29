@@ -1,0 +1,19 @@
+Merhaba {{ name }},
+<br>
+<br>
+UserScan.com'daki {{ project.name }} adlı projenize yeni video kaydı eklendi.
+<br>
+        {# @todo URL PATH IS GIVEN STATICALLY, DYNAMIZATION WOULD BE NICE IF POSSIBLE BUT NOT REQUIRED #}
+        {# the following will give url as localhost! BEWARE! #}
+        {#{ url('play_video', { 'video_id' : testerSessionId }) }#}
+{% if app.environment == 'dev' %}
+{#http://localhost/~macbook/userscan-source/web/app_dev.php/play_video/79329ac6158ec15ace0fc5c3716469e38105cc5a/#}
+    <strong style="color: red;">We assume you are in developer environment! If not, please inform us (at contact@userscan.com).</strong><br>
+    İzlemek için lütfen <a href="{{ url('play_video', { 'video_id' : testerSessionId }) }}">tıklayın</a>.
+{% else %}
+    İzlemek için lütfen <a href="http://userscan.com/play_video/{{ testerSessionId }}/">tıklayın</a>.
+{% endif %}
+<br>
+<br>
+Saygılarla,<br>
+UserScan ekibi

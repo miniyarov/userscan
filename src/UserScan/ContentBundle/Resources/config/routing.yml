@@ -1,0 +1,39 @@
+_homepage:
+    pattern:  /
+    defaults: { _controller: ContentBundle:Content:index }
+
+project_tester:
+    pattern: /project/{url_id}/
+    defaults: { _controller: ContentBundle:Tester:index }
+    requirements:
+        url_id: ([a-z0-9]+)
+
+project_xml:
+    pattern: /project_xml/{url_id}/
+    defaults: { _controller: ContentBundle:Tester:xmlGenerator }
+    requirements:
+        url_id: ([a-z0-9]+)
+
+how_it_works:
+  pattern: /how-it-works/
+  defaults: { _controller: ContentBundle:Content:howItWorks }
+
+about:
+  pattern: /about/
+  defaults: { _controller: ContentBundle:Content:about }
+
+services:
+    pattern: /services/
+    defaults: { _controller: ContentBundle:Content:services }
+
+blog:
+    pattern: /blog/
+    defaults: { _controller: ContentBundle:Content:blog }
+
+contact:
+    pattern: /contact/
+    defaults: { _controller: ContentBundle:Content:contact }
+
+prices:
+    pattern: /prices/
+    defaults: { _controller: ContentBundle:Content:prices }

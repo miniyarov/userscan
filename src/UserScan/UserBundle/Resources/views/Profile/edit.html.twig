@@ -1,0 +1,80 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Profil Sayfası - UserScan{% endblock %}
+
+{% block body %}
+<div class="inner">
+    <div class="container">
+    </div><!-- /container -->
+</div>
+
+<div class="row show-grid">
+    <div class="span6">
+        <div class="well">
+            <h2>Profiliniz</h2>
+            <form action="{{ path('profile')}}" method="post" {{ form_enctype(editForm) }}>
+                {{ form_errors(editForm) }}
+                <div class="clearfix">
+                    {{ form_errors(editForm.username) }}
+                    {{ form_label(editForm.username, 'Eposta adresi') }}
+                    {{ form_widget(editForm.username, { 'attr': {'class': 'span4' }}) }}
+                </div>
+                <div class="clearfix">
+                    {{ form_errors(editForm.fullname) }}
+                    {{ form_label(editForm.fullname, 'Adınız Soyadınız') }}
+                    {{ form_widget(editForm.fullname, { 'attr': {'class': 'span4' }}) }}
+                </div>
+                {# <h4>Şifrenizi değiştirmek için eski şifrenizi girin</h4>
+                <div class="clearfix">
+                    {{ form_errors(editForm.current_password) }}
+                    {{ form_label(editForm.current_password, 'Eski Şifreniz') }}
+                    {{ form_widget(editForm.current_password, {'attr': {'class': 'span4'}}) }}
+                </div>
+                <div class="clearfix">
+                    {{ form_errors(editForm.password.first) }}
+                    {{ form_label(editForm.password.first, 'Yeni Şifreniz') }}
+                    {{ form_widget(editForm.password.first, { 'attr': { 'class':'span4' } }) }}
+                </div>
+                <div class="clearfix">
+                    {{ form_errors(editForm.password.second) }}
+                    {{ form_label(editForm.password.second, 'Yeni Şifreniz Tekrar') }}
+                    {{ form_widget(editForm.password.second, { 'attr': {'class':'span4'} }) }}
+                </div> #}
+                {{ form_rest(editForm) }}
+                <div class="clearfix">
+                    <input type="submit" class="btn btn-info" value="Güncelle">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="span6">
+        <div class="well">
+            <h2>Şifre değiştirme</h2>
+            <form action="{{ path('changeProfilePassword')}}" method="post" {{ form_enctype(changePasswordForm) }}>
+                {{ form_errors(changePasswordForm) }}
+                <h4>Şifrenizi değiştirmek için eski şifrenizi girin</h4>
+                <div class="clearfix">
+                    {{ form_errors(changePasswordForm.current_password) }}
+                    {{ form_label(changePasswordForm.current_password, 'Eski Şifreniz') }}
+                    {{ form_widget(changePasswordForm.current_password, {'attr': {'class': 'span4'}}) }}
+                </div>
+                <div class="clearfix">
+                    {{ form_errors(changePasswordForm.password.first) }}
+                    {{ form_label(changePasswordForm.password.first, 'Yeni Şifreniz') }}
+                    {{ form_widget(changePasswordForm.password.first, { 'attr': { 'class':'span4' } }) }}
+                </div>
+                <div class="clearfix">
+                    {{ form_errors(changePasswordForm.password.second) }}
+                    {{ form_label(changePasswordForm.password.second, 'Yeni Şifreniz Tekrar') }}
+                    {{ form_widget(changePasswordForm.password.second, { 'attr': {'class':'span4'} }) }}
+                </div>
+                {{ form_rest(changePasswordForm) }}
+                <div class="clearfix">
+                    <input type="submit" class="btn btn-info" value="Güncelle">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{#
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>An Error Occurred: {{ status_text }}</title>
+    </head>
+    <body>
+        <h1>Oops! An Error Occurred - Hello world</h1>
+        <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+
+        <div>
+            Something is broken. Please e-mail us at [email] and let us know
+            what you were doing when this error occurred. We will fix it as soon
+            as possible. Sorry for any inconvenience caused.
+        </div>
+    </body>
+</html>#}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr" dir="ltr">
+<head>
+    <title>UserScan.com - {{ status_code }} {{ status_text|trans }}</title>
+    <meta name="description" content="UserScan.com - {{ status_code }} {{ status_text|trans }}">
+    <meta name="author" content="UserScan">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="tr" />
+
+    {% stylesheets filter='cssrewrite,?yui_css'
+        'bundles/content/css/*'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+        .danger {
+            margin-left:10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="logos" href="{{ path('_homepage') }}"></a>
+                {% if hide_nav_bar is not defined %}
+                <ul class="nav">
+                    <li {% if app.request.attributes.get('_route') == '_homepage' %}class="active"{% endif %}>
+                        <a href="{{ path('_homepage') }}">{% trans %}Home{% endtrans %}</a>
+                    </li>
+                    <li {% if app.request.attributes.get('_route') == 'how_it_works' %}class="active"{% endif %}>
+                        <a href="{{ path('how_it_works') }}">{% trans %}How it works{% endtrans %}</a>
+                    </li>
+                    {#<li {% if app.request.attributes.get('_route') == 'prices' %}class="active"{% endif %}>
+                            <a href="{{ path('prices') }}">{% trans %}Price{% endtrans %}</a>
+                        </li>
+                        <!--<li {% if app.request.attributes.get('_route') == 'blog' %}class="active"{% endif %}>
+                            <a href="{{ path('blog') }}">{% trans %}Blog{% endtrans %}</a>
+                        </li>-->#}
+                        <li {% if app.request.attributes.get('_route') == 'login' %}class="active"{% endif %}>
+                    <a href="{{ path('login') }}">{% trans %}Login{% endtrans %}</a>
+                </li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="well">
+            <h2>{{ status_code }} {{ status_text|trans }}</h2>
+            <p>
+                {{ status_code }} {{ status_text|trans }}
+            </p>
+        </div>
+
+
+        <footer>
+            <ul class="footer">
+                <li><p>UserScan &copy; 2012</p></li>
+            </ul>
+            {% if hide_nav_bar is not defined %}
+            <ul class="footer" style="float: right;color: silver;">
+                <li><a href="{{ path('_homepage') }}">{% trans %}Home{% endtrans %}</a>  &bull;</li>
+                <li><a href="{{ path('how_it_works') }}">{% trans %}How it works{% endtrans %}</a> &bull;</li>
+                <li><a href="{{ path('about') }}">{% trans %}About{% endtrans %}</a></li>
+            </ul>
+            {% endif %}
+        </footer>
+    </div>
+</body>
+</html>
