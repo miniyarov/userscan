@@ -1,21 +1,21 @@
 imports:
-    - { resource: parameters.ini }
+    - { resource: parameters.yml }
     - { resource: security.yml }
 
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
     secret:          %secret%
-    charset:         UTF-8
-    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    default_locale: %locale%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: %kernel.debug%
     form:            true
     csrf_protection: true
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-    session:
-        default_locale: %locale%
-        auto_start:     true
-        lifetime:       86400
+    session:          ~
+    trust_proxy_headers: false
 
 # Twig Configuration
 twig:
@@ -39,6 +39,7 @@ services:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
+    #bundles: []
     # java: /usr/bin/java
     filters:
         yui_js:
@@ -76,11 +77,8 @@ swiftmailer:
     #port:       %mailer_port%
     username:   %mailer_user%
     password:   %mailer_password%
+    spool: { type: memory }
 
-
-jms_security_extra:
-    secure_controllers:  true
-    secure_all_services: false
 
 parameters:
     video_path:   %kernel.root_dir%/../videos/
