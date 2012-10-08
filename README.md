@@ -148,6 +148,9 @@ Enjoy!
 
 Setting Up Development Environment
 
+### Installation
+
+```bash
 $ cd /var/www
 $ git clone git@github.com:miniyarov/userscan.git
 $ cd userscan
@@ -158,3 +161,4 @@ $ cp app/config/parameters.ini.dist app/config/parameters.ini
 $ nano app/config/parameters.ini (database information)
 $ apt-get install apache2 mysql-server memcached php5 php5-memcache php5-sqlite3 php5-memcached phpmyadmin php5-gd php5-curl php5-cli php5-snmp php5-imagick php5-mcrypt php5-mysql php5-xsl php5-xmlrpc sendmail git php5-sqlite3 && sudo a2enmod rewrite a2enmod ssl && sudo /etc/init.d/apache2 restart
 $ chmod 777 -R app/cache app/logs
+```
