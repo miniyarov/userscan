@@ -38,8 +38,10 @@
             </ul>
 
             <div class="tac" style="margin-top: 20px;">
-                <applet code="app.App.class" archive="{{ app.request.uriForPath('/utilities/UserScanRecordAppSigned.jar') }}" width=450 height=100>
-                    <param name="archivefile" value="{{ app.request.uriForPath('/utilities/UserScanRecordv3.zip') }}">
+                <applet code="applet.App.class" archive="{{ app.request.uriForPath('/utilities/UserScanAppSigned.jar') }}" width=300 height=300>
+                    <param name="java_arguments" value="-Xmx256m -Djava.net.preferIPv4Stack=true">
+                    <param name="seperate_jvm" value="true">
+                    <param name="java_version" value="1.7+">
                     <param name="project_id" value="{{ project.urlId }}">
                     <param name="tester_id" value="{{ tester.sessionId }}">
                 </applet>
