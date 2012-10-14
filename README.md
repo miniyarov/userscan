@@ -146,6 +146,24 @@ The Symfony Standard Edition comes pre-configured with the following bundles:
 
 Enjoy!
 
+[1]:  http://symfony.com/doc/2.1/book/installation.html
+[2]:  http://getcomposer.org/
+[3]:  http://symfony.com/download
+[4]:  http://symfony.com/doc/2.1/quick_tour/the_big_picture.html
+[5]:  http://symfony.com/doc/2.1/index.html
+[6]:  http://symfony.com/doc/2.1/bundles/SensioFrameworkExtraBundle/index.html
+[7]:  http://symfony.com/doc/2.1/book/doctrine.html
+[8]:  http://symfony.com/doc/2.1/book/templating.html
+[9]:  http://symfony.com/doc/2.1/book/security.html
+[10]: http://symfony.com/doc/2.1/cookbook/email.html
+[11]: http://symfony.com/doc/2.1/cookbook/logging/monolog.html
+[12]: http://symfony.com/doc/2.1/cookbook/assetic/asset_management.html
+[13]: http://jmsyst.com/bundles/JMSSecurityExtraBundle/master
+[14]: http://jmsyst.com/bundles/JMSDiExtraBundle/master
+[15]: http://symfony.com/doc/2.1/bundles/SensioGeneratorBundle/index.html
+
+
+
 Setting Up Development Environment
 
 ### Installation
@@ -161,4 +179,3 @@ $ cp app/config/parameters.ini.dist app/config/parameters.ini
 $ nano app/config/parameters.ini (database information)
 $ apt-get install apache2 mysql-server memcached php5 php5-memcache php5-sqlite3 php5-memcached phpmyadmin php5-gd php5-curl php5-cli php5-snmp php5-imagick php5-mcrypt php5-mysql php5-xsl php5-xmlrpc sendmail git php5-sqlite3 && sudo a2enmod rewrite a2enmod ssl && sudo /etc/init.d/apache2 restart
 $ chmod 777 -R app/cache app/logs
-```
