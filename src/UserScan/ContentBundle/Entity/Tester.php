@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserScan\ContentBundle\Entity\Tester
  *
- * @ORM\Table(name="testers", indexes={@ORM\index(columns={"sessionId"})})
+ * @ORM\Table(name="testers", indexes={@ORM\Index(columns={"sessionId"})})
  * @ORM\Entity
  */
 class Tester
