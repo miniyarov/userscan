@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Entity
-* @ORM\Table(name="users", indexes={@ORM\index(columns={"email", "recoverHash", "activationHash"})})
+* @ORM\Table(name="users", indexes={@ORM\Index(columns={"email", "recoverHash", "activationHash"})})
 */
 class User implements UserInterface
 {
