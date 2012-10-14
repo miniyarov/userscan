@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="projects", indexes={@ORM\index(columns={"url_id"})})
+ * @ORM\Table(name="projects", indexes={@ORM\Index(columns={"url_id"})})
  */
 
 class Project
