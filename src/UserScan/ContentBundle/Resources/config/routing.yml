@@ -14,16 +14,22 @@ project_xml:
     requirements:
         url_id: ([a-z0-9]+)
 
+project_file_upload:
+    pattern: /video_up/{project_id}/{tester_id}/
+    defaults: { _controller: ContentBundle:Upload:handle }
+    requirements:
+        _method: POST
+
 how_it_works:
-  pattern: /how-it-works/
-  defaults: { _controller: ContentBundle:Content:howItWorks }
+    pattern: /nasil-calisir/
+    defaults: { _controller: ContentBundle:Content:howItWorks }
 
 about:
-  pattern: /about/
-  defaults: { _controller: ContentBundle:Content:about }
+    pattern: /hakkimizda/
+    defaults: { _controller: ContentBundle:Content:about }
 
 services:
-    pattern: /services/
+    pattern: /servisler/
     defaults: { _controller: ContentBundle:Content:services }
 
 blog:
@@ -31,9 +37,9 @@ blog:
     defaults: { _controller: ContentBundle:Content:blog }
 
 contact:
-    pattern: /contact/
+    pattern: /iletisim/
     defaults: { _controller: ContentBundle:Content:contact }
 
 prices:
-    pattern: /prices/
+    pattern: /fiyatlar/
     defaults: { _controller: ContentBundle:Content:prices }
