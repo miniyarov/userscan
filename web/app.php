@@ -9,7 +9,7 @@ $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 // Change 'sf2' to a unique prefix in order to prevent cache key conflicts
 // with other applications also using APC.
 
-$loader = new ApcClassLoader('_UserScan.Com_', $loader);
+$loader = new ApcClassLoader('UserScan.Com.v.1.0.1', $loader);
 $loader->register(true);
 
 require_once __DIR__.'/../app/AppKernel.php';

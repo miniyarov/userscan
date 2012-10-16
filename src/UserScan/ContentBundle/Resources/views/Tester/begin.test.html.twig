@@ -39,9 +39,9 @@
 
             <div class="tac" style="margin-top: 20px;">
                 {% if app.request.query.get('applet') == 'v2' %}
-                    {% set applet = '/utilities/UserScanAppSigned.jar' %}
-                {% else %}
                     {% set applet = '/utilities/UserScanAppSignedv2.jar' %}
+                {% else %}
+                    {% set applet = '/utilities/UserScanAppSigned.jar' %}
                 {% endif %}
                 <applet code="applet.App.class" archive="{{ app.request.uriForPath(applet) }}" width=300 height=300>
                     <param name="java_arguments" value="-Xmx256m -Djava.net.preferIPv4Stack=true">
