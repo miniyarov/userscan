@@ -3,5 +3,39 @@
 {% block title %}{% trans %}Prices and Sign up{% endtrans %} | UserScan.com{% endblock %}
 
 {% block body %}
-Prices Page
+<div class="well">
+	<div class="participant">
+	    <span>Katılımcı Sayısı?</span>
+	    <span>Katılımcı Başınca Ücret</span>
+	    <span>Toplam</span>
+	</div>
+	<ul class="part">
+	    <li>
+	        <img src="{{asset('bundles/content/images/list_all_participants.png')}}" width="30" height="30"/>
+	        <select id="part-count">
+	            <option value="1">1 Katılımcı</option>
+	            <option value="2">2 Katılımcı</option>
+	            <option value="3">3 Katılımcı</option>
+	            <option value="4">4 Katılımcı</option>
+	            <option value="5">5 Katılımcı</option>
+	            <option value="6">6 Katılımcı</option>
+	            <option value="7">7 Katılımcı</option>
+	            <option value="8">8 Katılımcı</option>
+	            <option value="9">9 Katılımcı</option>
+	            <option value="10">10 Katılımcı</option>
+	        </select>
+	    </li>
+	    <li class="per-price">
+	        <span>49 TL</span>
+	    </li>
+	    <li class="total">
+	        <span>59 TL</span>
+	        <input type="hidden" id="total-price" />
+	    </li>
+	</ul>
+	<div class="special-offer">
+	                
+	</div>​
+</div>
+<div class="clearfix"></div>
 {% endblock %}

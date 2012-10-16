@@ -54,4 +54,13 @@ $(document).ready(function() {
         $("div.login").hide();
         $("div.register").show();
     });
+        price = '49';
+    $('#part-count').change(function() { 
+        if ($(this).val() == 3) {
+            $('.special-offer').show();
+        }
+        total = ($(this).val()) * price;
+        $('.total span').html(total+' TL').effect("highlight", {}, 2000);;
+        $('#total-price').val(total);
+    });
 });
