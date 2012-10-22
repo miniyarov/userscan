@@ -148,9 +148,9 @@
         </ul>
         {% if hide_nav_bar is not defined %}
         <ul class="footer" style="float: right;color: silver;">
-            <li><a href="{{ path('_homepage') }}">{% trans %}Home{% endtrans %}</a>  &bull;</li>
-            <li><a href="{{ path('how_it_works') }}">{% trans %}How it works{% endtrans %}</a> &bull;</li>
-            <li><a href="{{ path('about') }}">{% trans %}About{% endtrans %}</a></li>
+            <li><a href="{{ path('_homepage') }}">{% trans %}Home{% endtrans %}</a></li>
+            <li> &bull; <a href="{{ path('how_it_works') }}">{% trans %}How it works{% endtrans %}</a></li>
+            {#<li><a href="{{ path('about') }}">{% trans %}About{% endtrans %}</a></li>#}
         </ul>
         {% endif %}
     </footer>

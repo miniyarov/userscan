@@ -33,7 +33,7 @@ class TaskController extends Controller
                 $taskForm = $this->createForm(new TaskType(), $task);
 
                 if ('POST' == $request->getMethod()) {
-                    $taskForm->bindRequest($request);
+                    $taskForm->bind($request);
 
                     if ($taskForm->isValid()) {
 
@@ -75,11 +75,11 @@ class TaskController extends Controller
 
             if (null !== $task && $task->getProject()->getUser()->getId() == $user->getId()) {
 
-                $taskForm = $this->get('form.factory')->create(new TaskType(), $task);
+                $taskForm = $this->createForm(new TaskType(), $task);
 
                 if ('POST' == $request->getMethod()) {
 
-                    $taskForm->bindRequest($request);
+                    $taskForm->bind($request);
 
                     if ($taskForm->isValid()) {
 
