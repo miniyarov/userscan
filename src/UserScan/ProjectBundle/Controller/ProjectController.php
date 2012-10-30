@@ -9,6 +9,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 
 use UserScan\ProjectBundle\Entity\Project;
 use UserScan\ProjectBundle\Forms\ProjectType;
+use UserScan\ProjectBundle\Entity\Task;
 
 class ProjectController extends Controller
 {
@@ -95,12 +96,18 @@ class ProjectController extends Controller
             }
 
             $project = new Project();
-            $projectForm = $this->get('form.factory')->create(new ProjectType(), $project);
+            $projectForm = $this->createForm(new ProjectType(), $project);
 
             if ('POST' == $request->getMethod() && false === $limited)
             {
-                $projectForm->bindRequest($request);
+                $projectForm->bind($request);
                 $project->setUser($user);
+
+                $task = new Task();
+                $task->setName('Anasayfayı 30 saniye inceleyin');
+                $task->setDescription('Sizce bu web sayfası ne iş yapıyor?');
+                $task->setProject($project);
+                $project->addTask($task);
 
                 //@todo might need beter unique url id
                 $project->setUrlId(md5(microtime(false) . $user->getId() . $project->getUrl()));
@@ -109,6 +116,7 @@ class ProjectController extends Controller
                 {
                     $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($project);
+                    $em->persist($task);
                     $em->flush();
 
                     $request->getSession()->setFlash('notice', 'Projeniz eklendi.');
@@ -147,7 +155,7 @@ class ProjectController extends Controller
                 $projectForm = $this->createForm(new ProjectType(), $project);
 
                 if ('POST' == $request->getMethod()) {
-                    $projectForm->bindRequest($request);
+                    $projectForm->bind($request);
 
                     if ($projectForm->isValid()) {
 

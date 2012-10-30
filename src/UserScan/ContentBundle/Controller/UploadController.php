@@ -10,15 +10,19 @@ class UploadController extends Controller
 {
     public function handleAction(Request $request, $project_id, $tester_id)
     {
+        /** @var $uploadedFile \Symfony\Component\HttpFoundation\File\UploadedFile */
         $uploadedFile = $request->files->get('video');
         if (null === $uploadedFile) {
-            return new Response('File upload failed', 400);
+            return new Response('File upload failed. Error: No data', 400);
         }
 
         $targetDir = $this->container->getParameter('video_path');
 
+        if ($uploadedFile->getExtension() == 'mp4') {
+            return new Response('File upload failed. Error: Wrong Extension', 400);
+        }
 
-        $uploadedFile->move($targetDir, $tester_id . '.wrong');
+        $uploadedFile->move($targetDir, sprintf('%s_%s.mp4', $tester_id, $project_id));
 
         return new Response('File upload successfull');
     }

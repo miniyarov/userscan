@@ -38,7 +38,12 @@
             </ul>
 
             <div class="tac" style="margin-top: 20px;">
-                <applet code="applet.App.class" archive="{{ app.request.uriForPath('/utilities/UserScanAppSigned.jar') }}" width=300 height=300>
+                {% if app.request.query.get('applet') == 'v2' %}
+                    {% set applet = '/utilities/UserScanAppSignedv2.jar' %}
+                {% else %}
+                    {% set applet = '/utilities/UserScanAppSigned.jar' %}
+                {% endif %}
+                <applet code="applet.App.class" archive="{{ app.request.uriForPath(applet) }}" width=300 height=300>
                     <param name="java_arguments" value="-Xmx256m -Djava.net.preferIPv4Stack=true">
                     <param name="seperate_jvm" value="true">
                     <param name="java_version" value="1.7+">
