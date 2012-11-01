@@ -4098,7 +4098,7 @@ footer {
 .main-page .box-4 { background-position:0 -59px; }
 .follow-buttons {margin-top: 30px; height: 40px; text-align: center; clear: both; }
 .follow-buttons > div { display: inline-block; height: 22px; }
-.logos { background: url(../images/colored-small.png); width: 193px; height: 40px;float: left; margin: 6px 2px 7px;}
+.logos { background: url(../images/colored-small.png) no-repeat; width: 245px; height: 40px;float: left; margin: 6px 2px 7px;}
 .page-block { background: #F0F0F0;  border-top: 3px solid #EBEBEB; border-bottom: 1px solid #E1E1E1; margin-bottom: 30px;  padding: 20px 0; margin-top: -9px;text-align: center;}
 .page-block h1 { margin-bottom: 10px;}
 .fs22 {font-size:22px;}
@@ -4118,4 +4118,56 @@ h4 ul li { list-style: none;}
 .input-line {
     line-height: 40px;
     width: 315px;
+}
+
+li {
+    list-style: none;
+}
+
+div.participant {
+    background: #EEE;
+    border-bottom: 1px solid #BBB;
+
+    overflow: hidden;
+    padding: 10px;
+    font-weight:bold;
+    width: 600px;
+}
+div.participant span {
+    margin-right: 95px;
+}
+ul.part {
+    border-bottom: 1px solid #BBB;    
+    overflow:hidden;
+    width: 620px;    
+    font-size: 20px;
+    margin: 0;
+}
+ul.part li {
+    float:left;
+    padding: 10px;     
+    height: 30px;
+}
+ul.part li select {
+    width: 110px;
+}
+ul.part li img {
+    margin-right: 10px;
+    float:left;
+}
+ul.part li.per-price {
+    width: 230px;
+    text-align:center;
+}
+ul.part li.total {
+    width: 110px;
+    text-align:center;   
+    font-weight:bold;
+}
+div.special-offer {
+    padding-left: 30px;
+    display:none;
+}
+.how-to-banner {
+    margin-left: -30px;
 }
