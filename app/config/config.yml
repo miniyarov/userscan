@@ -30,6 +30,10 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
+    userscan.twig.extension.debug:
+        class: Twig_Extension_Debug
+        tags:
+            - { name: twig.extension }
     common_monolog_processor:
             class: UserScan\ContentBundle\MonologExtension\MonologProcessor
             tags:

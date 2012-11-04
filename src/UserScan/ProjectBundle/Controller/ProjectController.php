@@ -20,19 +20,8 @@ class ProjectController extends Controller
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
-        //$projects = $user->getProjects();
-
-        $tests = $this->getDoctrine()->getEntityManager()
-            ->createQuery("
-                SELECT p, t FROM ProjectBundle:Project p
-                JOIN p.testers t
-                WHERE t.uploaded = 1
-            ")->getResult();
-
-
         $parameters = array(
-            'projects' => $user->getProjects(),
-            'testers'  => $tests
+            'projects' => $user->getProjects()
         );
 
         return $this->render('ProjectBundle:Project:projects.html.twig', $parameters);

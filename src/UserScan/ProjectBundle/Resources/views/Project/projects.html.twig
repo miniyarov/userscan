@@ -73,47 +73,50 @@
                                     <a href="{{ path('add_task', { 'project_id': project.id }) }}" data-toggle="modal" data-target="modal-ajax" class="btn btn-success">Görev ekle</a>
                             {% endif %}
 
-                            {% if testers|length > 0 %}
-                                <hr />
-                                <h3 class="fl">Test sonuç videoları:</h3>
-                                <br class="clr" />
-                                <table class="table table-striped table-bordered table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Adı</th>
-                                            <th>Eposta</th>
-                                            {#<th>Tarayıcı</th>#}
-                                            <th>Tarih</th>
-                                            <th>İşlemler</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for tester in project.testers if tester.uploaded == true %}
-                                        <tr>
-                                            <td>{{ loop.index }}</td>
-                                            <td>{{ tester.name }}</td>
-                                            <td>{{ tester.email }}</td>
-                                            {#<td>{{ tester.userAgent }}</td>#}
-                                            <td>{{ tester.createdAt|date('d/m/Y H:i') }}</td>
-                                            <td>
-                                                <a href="{{ path('play_video', { 'video_id': tester.sessionId }) }}" data-toggle="modal" data-target="modal-ajax" data-modal-width="600px" data-modal-left="50%">izle</a>
-                                            </td>
-                                        </tr>
-                                    {% else %}
-                                        <tr>
-                                            <td colspan="7">
-                                                Henüz video kaydı yapılmadı.
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            {% else %}
-                                {#<p>
-                                    Henüz video kaydı yapılmadı.
-                                </p>#}
-                            {% endif %}
+                            {% set uploadedTestList %}{% endset %}
+
+                            {% for tester in project.testers if tester.uploaded == true %}
+                                {% set uploadedTestList %}
+                                    <hr />
+                                    <h3 class="fl">Test sonuç videoları:</h3>
+                                    <br class="clr" />
+                                    <table class="table table-striped table-bordered table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Adı</th>
+                                                <th>Eposta</th>
+                                                {#<th>Tarayıcı</th>#}
+                                                <th>Tarih</th>
+                                                <th>İşlemler</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for tester in project.testers if tester.uploaded == true %}
+                                            <tr>
+                                                <td>{{ loop.index }}</td>
+                                                <td>{{ tester.name }}</td>
+                                                <td>{{ tester.email }}</td>
+                                                {#<td>{{ tester.userAgent }}</td>#}
+                                                <td>{{ tester.createdAt|date('d/m/Y H:i') }}</td>
+                                                <td>
+                                                    <a href="{{ path('play_video', { 'video_id': tester.sessionId }) }}" data-toggle="modal" data-target="modal-ajax" data-modal-width="600px" data-modal-left="50%">izle</a>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="7">
+                                                    Henüz video kaydı yapılmadı.
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% endset %}
+                            {% endfor %}
+
+                            {{ uploadedTestList }}
+
                             <hr />
                             <h4 class="tac">Linki kullanıcılarla paylaş:</h4>
                             <input class="span4" type="text" value="{{ url('project_tester', {'url_id': project.getUrlId}) }}">
