@@ -4,7 +4,7 @@ parameters:
     database_port: ~
     database_name: userscan
     database_user: root
-    database_password: pont
+    database_password: root
 
     #@todo Configure Local SMTP
     #mailer_transport: "smtp"
