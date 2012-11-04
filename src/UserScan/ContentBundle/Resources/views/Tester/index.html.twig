@@ -10,10 +10,10 @@
             <h6 class="fr">Adım 1 / 2</h6>
             <h1>Merhaba,</h1>
             <h3>&nbsp;</h3>
-            <h4><b>{{ project.name|capitalize }}</b> proje testine hoşgeldin. </h4>
+            <h4><b>{{ project.name|capitalize }}</b> için kullanılabilirlik testine kaydolun. </h4>
             <br/>
 
-            <form class="form-inline" method="post">
+            <form method="post">
                 <div class="input-line">
                     {{ form_label(testerForm.name, 'Adınız', { 'attr' : { 'class' : 'label-space' } }) }}
                     {{ form_widget(testerForm.name, { 'attr' : { 'class' : 'required' } }) }}
