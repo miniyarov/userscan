@@ -5,8 +5,8 @@
 /app/cache/*
 /app/logs/*
 /vendor/*
-/app/config/parameters.yml
 /app/config/deploy.rb
+app/config/parameters.yml
 
 Capfile
 .rsync_cache
