@@ -12,11 +12,23 @@
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=293664817405143";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $f('sample_player', '{{ asset('bundles/content/swf/flowplayer-3.2.11.swf') }}', {
+            clip: {
+                url: '{{ app.request.scheme ~ '://' ~ app.request.host ~ asset('videos/723a5f58e45d570ad43e2996b33c0cc6292823b8.mp4') }}',
+                autoPlay: false,
+                autoBuffering: true
+            }
+        });
+    });
+</script>
 <div class="row">
 
     <div class="span3">
-        <p><i class="icon-eye-open"></i> Örnek test senaryoları;</p>
+        <p><i class="icon-eye-open"></i> Örnek test videosu;</p>
+        <div id="sample_player" style="width:220px; margin-bottom:10px;"></div>
+
         <pre style="word-break: normal;"><i class="icon-tags"></i> Sahibinden.com'dan Mecidiyeköy'de 1000 TL'e kadar kiralık ev araması yapın.</pre>
         <pre style="word-break: normal;"><i class="icon-tags"></i> Hepsiburada.com'dan Everest marka kablosuz mouse satın alın.</pre>
     </div>

@@ -8,6 +8,7 @@
 /app/config/deploy.rb
 app/config/parameters.yml
 
+web/videos/
 Capfile
 .rsync_cache
 .DS_Store
