@@ -1,5 +1,5 @@
-<div class="span5 register" style="width: 340px;margin-left: 340px;display: none;">
-    <div class="well">
+<div class="span5" style="float:right" >
+    <div class="well" style="width: 298px; float:right">
         <h2>Kayıt Ol</h2>
         <form method="post" action="{{ path('register') }}" {{ form_enctype(registerForm) }}>
             {{ form_errors(registerForm) }}
@@ -21,7 +21,6 @@
             </div>
             {{ form_rest(registerForm) }}
             <div class="clearfix" style="line-height: 37px;">
-                <a href="#" class="login">Üyemisin? Giriş yap.</a>
                 <input type="submit" class="btn-success fr btn-large" value="Kayıt ol">
             </div>
         </form>

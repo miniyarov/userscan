@@ -42,12 +42,6 @@ $(document).ready(function() {
         }
         $('#'+target).css('width', width).css('left', left).html('<div class="modal-header"><a class="close" href="#" data-dismiss="modal">×</a><h3>Yükleniyor...</h3></div>').modal('show').load(url);
     });
-    $("a.login").click(function(e){
-        e.preventDefault();
-
-        $("div.register").hide();
-        $("div.login").show();
-    });
     $("a.register").click(function(e){
         e.preventDefault();
 

@@ -9,8 +9,8 @@
 </div>
 
 <div class="row show-grid">
-    <div class="span5 login" style="width: 340px;  margin-left: 340px" >
-        <div class="well">
+    <div class="span5">
+        <div class="well"  style="width: 298px;" >
             <h2>{% trans %}Login{% endtrans %}</h2>
             {% if error %}
                 <div class="error">{{ error.message|trans|raw }}</div>
@@ -28,16 +28,15 @@
                 <div class="clearfix" style="line-height: 37px;">
                     <div class="fl">
                         <a href="{{ url('forgot_password') }}">Şifremi unuttum</a>
-                        <br/>
-                        <a href="#" class="register">Yeni üyelik.</a>
                     </div>
                     <input type="submit" class="btn btn-success btn-large mr2fo fr" value="{% trans %}Login{% endtrans %}" />
                 </div>
             </form>
         </div>
+    
     </div>
-
-    {% render 'UserBundle:Registration:register' %}
+{% render 'UserBundle:Registration:register' %}
+    
 
 </div>
 {% endblock %}
