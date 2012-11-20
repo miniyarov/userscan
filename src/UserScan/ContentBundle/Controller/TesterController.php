@@ -46,7 +46,7 @@ class TesterController extends Controller
 
         if ('POST' == $request->getMethod()) {
 
-            $testerForm->bindRequest($request);
+            $testerForm->bind($request);
 
             if ($testerForm->isValid()) {
 

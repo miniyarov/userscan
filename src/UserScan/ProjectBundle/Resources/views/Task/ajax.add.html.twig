@@ -5,11 +5,7 @@
 <form id="createTask" method="post" action="{{ path('add_task', { 'project_id' : projectId }) }}" {{ form_enctype(taskForm) }}>
     <div class="modal-body">
         <div>
-            {{ form_label(taskForm.name, 'Görev adı') }}
-            {{ form_widget(taskForm.name, { 'attr': { 'class' : 'span4' } }) }}
-        </div>
-        <div>
-            {{ form_label(taskForm.description, 'Görev açıklaması') }}
+            {{ form_label(taskForm.description, 'Görev') }}
             {{ form_widget(taskForm.description, { 'attr': { 'class' : 'span4' } }) }}
         </div>
         <input type="hidden" name="project_id" value="{{ projectId }}">

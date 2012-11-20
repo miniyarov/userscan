@@ -18,7 +18,7 @@ class UploadController extends Controller
 
         $targetDir = $this->container->getParameter('video_path');
 
-        if ($uploadedFile->getExtension() == 'mp4') {
+        if ('mp4' == $uploadedFile->getExtension()) {
             return new Response('File upload failed. Error: Wrong Extension', 400);
         }
 

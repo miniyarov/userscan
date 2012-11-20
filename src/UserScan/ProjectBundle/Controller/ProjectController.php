@@ -93,7 +93,7 @@ class ProjectController extends Controller
                 $project->setUser($user);
 
                 $task = new Task();
-                $task->setName('Anasayfayı 30 saniye inceleyin');
+                $task->setName('');
                 $task->setDescription('Sizce bu web sayfası ne iş yapıyor?');
                 $task->setProject($project);
                 $project->addTask($task);

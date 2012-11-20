@@ -14,7 +14,7 @@ monolog:
     handlers:
         main:
             type:         fingers_crossed
-            action_level: error #error
+            action_level: critical #error
             handler:      grouped #nested
         #nested:
         #    type:  stream
