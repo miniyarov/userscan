@@ -117,7 +117,7 @@ class TesterController extends Controller
         foreach ($tasks as $task) {
             $xmlTasks = $xml->addChild('task');
 
-            $xmlTasks->addChild('taskTitle', $task->getName());
+            $xmlTasks->addChild('taskTitle', '');
             $xmlTasks->addChild('taskText', $task->getDescription());
         }
 
