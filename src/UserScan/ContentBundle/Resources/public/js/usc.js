@@ -57,4 +57,16 @@ $(document).ready(function() {
         $('.total span').html(total+' TL').effect("highlight", {}, 2000);;
         $('#total-price').val(total);
     });
+    $('.test-finish').click(function(){
+        //$('div.bar').fadeIn(400).css('height', 190);
+          $('div.bar').animate({
+            height: 200
+          }, 500, function() {
+          });
+          $('body.iframe iframe').animate({
+            opacity: .5
+          }, 500, function() {
+          });
+          $('.last-screen').show();
+    });
 });
