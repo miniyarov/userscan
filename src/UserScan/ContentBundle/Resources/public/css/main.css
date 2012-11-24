@@ -115,6 +115,7 @@ div.special-offer {
 body.iframe {
     margin: 0px;
     overflow-y: hidden;
+    overflow-x: hidden;
     position: relative;
 }
 body.iframe  .bar {
