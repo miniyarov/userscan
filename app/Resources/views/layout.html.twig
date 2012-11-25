@@ -13,14 +13,14 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     {% endif %}
-    {% javascripts filter='?yui_js'
+    {% javascripts filter='?yui_js' output='js/userscan.js'
         '@ContentBundle/Resources/public/js/jquery-1.7.2.min.js'
         '@ContentBundle/Resources/public/js/*'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
-    {% stylesheets filter='cssrewrite,?yui_css'
+    {% stylesheets filter='cssrewrite,?yui_css' output='css/userscan.css'
         'bundles/content/css/*'
     %}
     <link rel="stylesheet" href="{{ asset_url }}">
