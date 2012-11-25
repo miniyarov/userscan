@@ -12,6 +12,14 @@ use UserScan\ContentBundle\Entity\Tester;
 
 class TesterController extends Controller
 {
+    public function indexV2Action()
+    {
+        $variables = array(
+            'hide_nav_bar' => true
+        );
+        return $this->render('ContentBundle:Tester:index.v2.html.twig', $variables);
+    }
+
     public function indexAction(Request $request, $url_id)
     {
         $doctrine = $this->getDoctrine();

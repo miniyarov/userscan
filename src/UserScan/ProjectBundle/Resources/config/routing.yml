@@ -1,4 +1,4 @@
-projects:
+projects: 
     pattern:  /projects/
     defaults: { _controller: ProjectBundle:Project:projects }
 

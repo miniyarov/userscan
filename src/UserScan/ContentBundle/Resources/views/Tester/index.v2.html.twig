@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html>
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% javascripts filter='?yui_js'
+        '@ContentBundle/Resources/public/js/jquery-1.7.2.min.js'
+        '@ContentBundle/Resources/public/js/*'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% stylesheets filter='cssrewrite,?yui_css'
+        'bundles/content/css/*'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+
+    <script type="text/javascript">
+			if (top != self) {location.href = 'about:blank';}
+    </script>
+
+	</head>
+
+	<html>
+		<body class="iframe">
+			<div class="bar">
+				<div class="body">
+					<div class="step">
+						<ul>
+							<li class="step1">Merhaba, bilgisayarınızda ekran görüntüsü alıp eğer mikrofonunuz varsa ses kaydı yapılacaktır.</li>
+							<li class="step2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</li>
+							<li class="step3">quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</li>
+							<li class="step4">
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</li>
+						</ul>
+					  <button class="btn btn-success test-finish" type="button">Testi Bitir</button>
+
+					</div>  
+				</div>
+			</div>
+			<div class="last-screen"></div>
+      <iframe src="http://www.markafoni.com/" frameborder="no" scrolling="yes" ></iframe>
+
+		</body>
+	</html>
+</html>
+
