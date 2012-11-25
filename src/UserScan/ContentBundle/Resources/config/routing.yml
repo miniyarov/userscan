@@ -8,6 +8,10 @@ project_tester:
     requirements:
         url_id: ([a-z0-9]+)
 
+project_tester_v2:
+    pattern: /project/yeni-test/
+    defaults: { _controller: ContentBundle:Tester:indexV2 }
+
 project_xml:
     pattern: /project_xml/{url_id}/
     defaults: { _controller: ContentBundle:Tester:xmlGenerator }
