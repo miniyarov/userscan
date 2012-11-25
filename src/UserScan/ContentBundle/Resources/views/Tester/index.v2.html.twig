@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="last-screen"></div>
-      <iframe src="http://www.markafoni.com/" frameborder="no" scrolling="yes" ></iframe>
+      <iframe src="{% if app.request.query.get('iframe') %}{{ app.request.query.get('iframe') }}{% else %}http://www.markafoni.com/{% endif %}" frameborder="no" scrolling="yes" ></iframe>
 
 		</body>
 	</html>
