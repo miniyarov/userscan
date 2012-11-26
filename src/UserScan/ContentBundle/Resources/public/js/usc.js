@@ -48,7 +48,7 @@ $(document).ready(function() {
         $("div.login").hide();
         $("div.register").show();
     });
-        price = '49';
+    price = '49';
     $('#part-count').change(function() { 
         if ($(this).val() == 3) {
             $('.special-offer').show();
@@ -57,16 +57,58 @@ $(document).ready(function() {
         $('.total span').html(total+' TL').effect("highlight", {}, 2000);;
         $('#total-price').val(total);
     });
-    $('.test-finish').click(function(){
-        //$('div.bar').fadeIn(400).css('height', 190);
-          $('div.bar').animate({
-            height: 200
-          }, 500, function() {
-          });
-          $('body.iframe iframe').animate({
-            opacity: .5
-          }, 500, function() {
-          });
-          $('.last-screen').show();
+
+    //iframe js's
+    var tasks={
+        "task":[
+            {
+                "task_id":"1",
+                "task_text":"Bu birinci görev",
+                "task_url":"http://www.enmoda.com"
+            },
+            {
+                "task_id":"2",
+                "task_text":"Bu ikinci görev",
+                "task_url":"http://www.enmoda.com"
+            },       
+            {
+                "task_id":"3",
+                "task_text":"Bu da üçüncü ve son görev",
+                "task_url":"http://www.enmoda.com"
+            }
+        ]
+    };
+
+    $('.test-start').click(function(){ 
+        $('li.cases .welcome').html('');
+        $.each(tasks.task,function(i,task){
+            $('.task_id').html('<span class="task-'+task.task_id+'">'+task.task_id+'</span>');
+            $('.task_text').append( 
+                task.task_id+'. Görev :'+
+                task.task_text+'<br/>');
+            $('body.iframe iframe').attr('src', task.task_url);
+        });
+        
+        //console.log($('body.iframe iframe').attr('src'));
     });
+    $('.prev-btn').click(function(){
+    
+    });
+    $('.next-btn').click(function(){
+
+    });
+    $('.test-finish').click(function(){
+        $('div.bar').animate({
+            height: 200
+        }, 500, function() {    
+    });
+  
+    $('body.iframe iframe').animate({
+        opacity: .5
+    }, 500, function() {
+
+    });
+        $('.last-screen').show();
+    });
+
 });

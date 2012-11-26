@@ -143,7 +143,10 @@ body.iframe iframe {
 }
 body.iframe ul, body.iframe ul li{
     margin: 0;
-    padding: 0;
+    padding: 4;
+    background: #FEF8A0;
+    border-radius: 3px;
+    font-size: 15px;
 }
 body.iframe .last-screen {
     position: absolute;
