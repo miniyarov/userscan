@@ -78,37 +78,57 @@ $(document).ready(function() {
             }
         ]
     };
+    $(function() {
+        var cnt = 0;
+        var counter = setInterval(function() {
+            if (cnt < 20) {
+                $('.step-2 .black-label').html(cnt);
+                cnt++;
+            }
+            else {
+                clearInterval(counter);
+                $('.step-2 .black-label').html('%100');
+            }
+        }, 100);
+    });
+    $('.overlay').show();
+    $('.start-btn').click(function(){
+        pdiv = $(this).attr('pdiv');
+        adiv = $(this).attr('adiv');
+        $('.'+pdiv).hide(300);
+        $('.'+adiv).show(400);
 
-    $('.test-start').click(function(){ 
-        $('li.cases .welcome').html('');
-        $.each(tasks.task,function(i,task){
-            $('.task_id').html('<span class="task-'+task.task_id+'">'+task.task_id+'</span>');
-            $('.task_text').append( 
-                task.task_id+'. Görev :'+
-                task.task_text+'<br/>');
-            $('body.iframe iframe').attr('src', task.task_url);
+        $('.step-2').delay(2000).hide(300);
+        $('.overlay').delay(2000).hide(300);
+        $('.step-3').delay(2400).show(500);
+
+    });
+
+    $('.task-complete').click(function(){
+        $(this).css('background' , '#ccc')
+        $('.step-3').hide();
+        $('.step-4').show();
+
+        $(function() {
+            var cnt = 0;
+            var counter = setInterval(function() {
+                if (cnt < 20) {
+                    $('.step-4 .black-label').html(cnt);
+                    cnt++;
+                }
+                else {
+                    clearInterval(counter);
+                    $('.step-4 .black-label').html('%100');
+                    console.log();
+                    if($('.step-4 .black-label').html() == '%100') {
+                        $('.step-4').hide();
+                        $('.step-5').show();
+                        $('.tester-form').show();
+                        $('.overlay').show();
+                    }
+                }
+            }, 300);
         });
-        
-        //console.log($('body.iframe iframe').attr('src'));
-    });
-    $('.prev-btn').click(function(){
-    
-    });
-    $('.next-btn').click(function(){
-
-    });
-    $('.test-finish').click(function(){
-        $('div.bar').animate({
-            height: 200
-        }, 500, function() {    
-    });
-  
-    $('body.iframe iframe').animate({
-        opacity: .5
-    }, 500, function() {
-
-    });
-        $('.last-screen').show();
     });
 
 });
