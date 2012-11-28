@@ -1,6 +1,7 @@
 <!DOCTYPE>
 <html>
 	<head>
+		<title>Kullanılabilirlik Testi</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% javascripts filter='?yui_js'
         '@ContentBundle/Resources/public/js/jquery-1.7.2.min.js'
@@ -18,31 +19,68 @@
     <script type="text/javascript">
 			if (top != self) {location.href = 'about:blank';}
     </script>
-
+    <style type="text/css">
+    	body {background: none !important}
+    </style>
 	</head>
 
 	<html>
-		<body class="iframe">
-			<div class="bar">
-				<div class="body">
-					<div class="step">
-						<ul>
-							<li class="step1">Merhaba, bilgisayarınızda ekran görüntüsü alıp eğer mikrofonunuz varsa ses kaydı yapılacaktır.</li>
-							<li class="step2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</li>
-							<li class="step3">quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</li>
-							<li class="step4">
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							</li>
-						</ul>
-					  <button class="btn btn-success test-finish" type="button">Testi Bitir</button>
 
-					</div>  
+		<body class="iframe">
+			<div class="iframe-wrapper">
+				<div class="iframe-top">
+					<div class="step-1">
+						<img src="{{asset('bundles/content/images/mic.png')}}" alt="" class="step-ico">
+						<div class="fl text">
+							<p>Merhaba, kullanılabilirlik testimize hoşgeldiniz.</p>
+							<p>Test süresince ekran görüntüsü ve aktif mikrofonunuz var ise ses kaydı yapılacaktır.</p>
+						</div>
+						<button class="green right-arrow start-btn" pdiv="step-1" adiv="step-2">BAŞLAT</button>
+					</div>
+					<div class="step-2 hide">
+						<img src="{{asset('bundles/content/images/lab.png')}}" alt="" class="step-ico">
+						<div class="text pt10">
+							<p>Kullanılabilirlik testi için gerekli görevler yükleniyor...</p>
+						</div>
+						<div class="black-label"></div>
+					</div>
+					<div class="step-3 hide">
+						<img src="{{asset('bundles/content/images/lab.png')}}" alt="" class="step-ico">
+						<div class="text pt10">
+							<p class="fl task-1">Tommy Hilfiger kampanyasından 1 Adet M Beden erkek tişörtü sepete ekleyin.</p>
+							<p class="fl hide task-2">Sepetinizdeki ürünleri satın alın.</p>
+							<button class="prev gray mr5">Önceki</button>
+							<button class="next gray">Sonraki</button>
+						</div>
+						<button class="green fr task-complete">BU GÖREVİ TAMAMLADIM</button>
+					</div>
+					<div class="step-4 hide">
+						<img src="{{asset('bundles/content/images/cloud.png')}}" alt="" class="step-ico pt10">
+						<div class="text pt10">
+							<p>Ekran görüntüsü ve ses kaydı sunucuya yükleniyor, lütfen bekleyiniz...</p>
+						</div>
+						<div class="black-label">0</div>
+					</div>	
+					<div class="step-5 hide">
+						<img src="{{asset('bundles/content/images/tick.png')}}" alt="" class="step-ico pt10">
+						<div class="text pt10">
+							<p>Tebrikler, kullanılabilirlik testini tamamladınız.</p>
+						</div>
+					</div>	
 				</div>
 			</div>
-			<div class="last-screen"></div>
+			<div class="tester-form hide">
+				<a href="#" class="close-btn">X</a>
+				<h4 class="fl">Hediyenizi size ulaştırabilmemiz için lütfen aşağıdaki formu doldurun.</h4>
+				<div class="clr"></div>
+				<label for="name">Ad Soyad</label>
+				<input type="text" name="name">
+				<label for="name">E-Posta</label>
+				<input type="text" name="name">
+				<div class="clr"></div>
+				<button class="green fr">Gönder</button>
+			</div>			
+			<div class="overlay"></div>
       <iframe src="{% if app.request.query.get('iframe') %}{{ app.request.query.get('iframe') }}{% else %}http://www.markafoni.com/{% endif %}" frameborder="no" scrolling="yes" ></iframe>
 
 		</body>

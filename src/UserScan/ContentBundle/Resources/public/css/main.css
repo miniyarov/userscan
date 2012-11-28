@@ -113,45 +113,142 @@ div.special-offer {
 
 /* iframe */
 body.iframe {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.iframe-wrapper {
+    padding-top: 10px;
+    height: 50px;
+    background: #ffff99;
+    width: 100%;
+    border-bottom: 5px solid #eeeeee;
+}
+.iframe-top {
+    width: 960px;
+    margin: 0 auto;
+}
+.iframe-top .step-ico {
+    float: left;
+    margin-right: 10px;
+}
+.iframe-top p {
+    margin:0
+}
+.iframe-top .step-3 p {
+    padding-top: 8px;
+    margin-right: 10px; 
+}
+.iframe-top button, .tester-form button {
+    padding: 8px;
+    color: #fff;
+    border-radius: 2px;
+    float: left;    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.iframe-top .green, .tester-form .green {
+    border: solid 1px #657d0f;
+    background: #7b9912;
+}
+.iframe-top .right-arrow {
+    padding-right: 25px;
+    background-image: url(../images/right-ico.png);
+    background-repeat: no-repeat;
+    background-position: 62px 15px;
+}
+.iframe-top .text {
+    margin-right: 20px;
+    float:left;
+}
+.iframe-top .text p {
+    color: #222222;
+}
+.iframe-top .black-label {
+    background: #222222;
+    color: #fff;
+    font-size: 11px;
+    border-radius: 2px;
+    padding: 2px 5px;
+    margin-top: 8px;
+    float: left;
+    margin-top: 10px;
+}
+.iframe-top .pt10 { padding-top: 10px;}
+.iframe-top .mr5 { margin-right: 5px;}
+.iframe-top .fr { float: right;}
+.iframe-top .gray {
+    background: #999999;
+    color: #fff;
+    font-size: 11px;
+    border: none;
+    padding: 4px;
+}
+.iframe-top .prev {
+    background-image: url(../images/left-ico.png);
+    background-repeat: no-repeat;
+    background-position: 10px 9px;
+    padding-left: 20px; 
+}
+.iframe-top .next {
+    background-image: url(../images/right-ico.png);
+    background-repeat: no-repeat;
+    background-position: 51px 9px;
+    padding-right: 20px; 
+}       
+.iframe-top .step-4 .text {
+    padding-top: 15px;
+}   
+.tester-form {
+    background: #fff;
+    border: solid 5px #eeeeee;   
+    width: 596px;
+    height: 250px;
+    position: absolute;
+    top: 238px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 1000000;   
+    padding: 30px 0 0 20px;     
+}
+.tester-form input[type="text"] {
+    width: 318px;
+    height: 30px;
+}
+.tester-form .close-btn {
+    border: solid 1px #be1d29;
+    background: #f32837;
+    color: #fff;
+    float: right;
+    width: 19px;
+    height: 19px;
+    display: block;
+    border-radius: 2px;
+    text-align: center;
+    margin: -20px 5px 0;
+}
+.tester-form .close-btn:hover {
+    text-decoration: none;
+}
+.overlay {
+    background-color: black;
+    opacity: 0.9;
+    -moz-opacity: 0.9;
+    filter: alpha(opacity=90);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10000;
+    display: none;
+}
+iframe {
     margin: 0px;
     overflow-y: hidden;
     overflow-x: hidden;
     position: relative;
-}
-body.iframe  .bar {
-    background: rgb(252,255,244); /* Old browsers */
-    background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(223,229,215,1) 40%, rgba(179,190,173,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,244,1)), color-stop(40%,rgba(223,229,215,1)), color-stop(100%,rgba(179,190,173,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 ); /* IE6-9 */
-    min-height: 39px;
-    width: 100%;
-    padding: 4px;
-}
-body.iframe .bar div.body {
-    margin: 0 auto;
-    color: #323232;
-    width: 990px;
-}
-body.iframe iframe {
-    width: 100%;
-    height: 100%;
-    z-index: 10
-}
-body.iframe ul, body.iframe ul li{
-    margin: 0;
-    padding: 0;
-}
-body.iframe .last-screen {
-    position: absolute;
-    z-index: 100000;
-    top: 200px;
-    display: none;
     width: 100%;
     height: 100%;
 }
-
 /* iframe */

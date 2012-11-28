@@ -48,7 +48,7 @@ $(document).ready(function() {
         $("div.login").hide();
         $("div.register").show();
     });
-        price = '49';
+    price = '49';
     $('#part-count').change(function() { 
         if ($(this).val() == 3) {
             $('.special-offer').show();
@@ -57,16 +57,78 @@ $(document).ready(function() {
         $('.total span').html(total+' TL').effect("highlight", {}, 2000);;
         $('#total-price').val(total);
     });
-    $('.test-finish').click(function(){
-        //$('div.bar').fadeIn(400).css('height', 190);
-          $('div.bar').animate({
-            height: 200
-          }, 500, function() {
-          });
-          $('body.iframe iframe').animate({
-            opacity: .5
-          }, 500, function() {
-          });
-          $('.last-screen').show();
+
+    //iframe js's
+    var tasks={
+        "task":[
+            {
+                "task_id":"1",
+                "task_text":"Bu birinci görev",
+                "task_url":"http://www.enmoda.com"
+            },
+            {
+                "task_id":"2",
+                "task_text":"Bu ikinci görev",
+                "task_url":"http://www.enmoda.com"
+            },       
+            {
+                "task_id":"3",
+                "task_text":"Bu da üçüncü ve son görev",
+                "task_url":"http://www.enmoda.com"
+            }
+        ]
+    };
+    $(function() {
+        var cnt = 0;
+        var counter = setInterval(function() {
+            if (cnt < 20) {
+                $('.step-2 .black-label').html(cnt);
+                cnt++;
+            }
+            else {
+                clearInterval(counter);
+                $('.step-2 .black-label').html('%100');
+            }
+        }, 100);
     });
+    $('.overlay').show();
+    $('.start-btn').click(function(){
+        pdiv = $(this).attr('pdiv');
+        adiv = $(this).attr('adiv');
+        $('.'+pdiv).hide(300);
+        $('.'+adiv).show(400);
+
+        $('.step-2').delay(2000).hide(300);
+        $('.overlay').delay(2000).hide(300);
+        $('.step-3').delay(2400).show(500);
+
+    });
+
+    $('.task-complete').click(function(){
+        $(this).css('background' , '#ccc')
+        $('.step-3').hide();
+        $('.step-4').show();
+
+        $(function() {
+            var cnt = 0;
+            var counter = setInterval(function() {
+                if (cnt < 20) {
+                    $('.step-4 .black-label').html(cnt);
+                    cnt++;
+                }
+                else {
+                    clearInterval(counter);
+                    $('.step-4 .black-label').html('%100');
+                    console.log();
+                    if($('.step-4 .black-label').html() == '%100') {
+                        $('.step-4').hide();
+                        $('.step-5').show();
+                        $('.tester-form').show();
+                        $('.overlay').show();
+                    }
+                }
+            }, 300);
+        });
+    });
+
 });
